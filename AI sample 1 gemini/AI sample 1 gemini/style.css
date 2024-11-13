@@ -1,0 +1,407 @@
+body {
+    background-image: url('https://imgcdn.stablediffusionweb.com/2024/9/5/62e04ff5-98e1-4254-8380-05debab8e527.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+@media (max-width: 768px) {
+    body {
+        background-size: cover;
+        background-position: center;
+    }
+}
+body::before {
+    content: "hack";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+  
+  .container {
+    /*background-color: #ffffffe3;*/
+    border: 2px solid #000;
+    border-radius: 10px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    position: relative;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+  .container h1 {
+    font-size: 52px; 
+    margin-bottom: 20px;
+    text-align: center;
+    color: #12fafaa6;
+    text-decoration: #000;
+  }
+
+  .container > * {
+    margin: 0 auto;
+  }
+  
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .input-container {
+    /*background-color: #12fafac1;*/
+    border: 2px solid #000;
+    border-radius: 10px;
+    display: flex;
+    gap: 2px;
+    padding: 2px;
+    width: 100%;
+  }
+  
+  .input-container input {
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .input-container button {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    /*color: #12fafa;*/
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px;
+    width: 30px;
+  }
+  
+  .grid {
+    background-color: #000;
+    border: 2px solid #000;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    height: 300px;
+    position: relative;
+    width: 100%;
+  }
+  .input-area {
+    width: 100%;
+    margin-top: auto;
+    border-radius: 25px;
+}
+
+.input-container {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    border-radius: 30px;
+}
+
+#user-input {
+    width: 100%;
+    height: 32px;
+    min-height: 40px;
+    max-height: 200px;
+    padding: 10px 40px 10px 10px; 
+    font-size: 16px;
+    border: 1px solid #000;
+    border-radius: 25px;
+    resize: none;
+    overflow-y: hidden;
+    background-color: #12fafa31;
+    color: hsl(120, 94%, 48%); 
+}
+#user-input::placeholder {
+    color: #0c87fa; 
+    opacity: 1; 
+}
+
+#send-button {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#send-button svg {
+    width: 32px;
+    height: 32px;
+    color: #000; 
+}
+
+.chat-window {
+    width: 1200px;
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    /*border: 1px solid #ccc;*/
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+}
+.chat-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+}
+
+.user-message {
+    align-self: flex-end;
+}
+
+.ai-message {
+    align-self: flex-start;
+}
+
+.message-content {
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #f0f0f087;
+}
+
+.user-message .message-content {
+    background-color: #12fafa;
+    color: #000;
+}
+
+.ai-message .message-content {
+    background-color: #f0f0f087;
+    color: black;
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.user-icon, .ai-icon {
+    margin-right: 8px;
+}
+
+.message-text {
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.message-text pre {
+    background-color: #f0f0f087;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.error {
+    color: #dc3545;
+}
+
+.loading-dots {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+}
+
+.loading-dots span {
+    width: 8px;
+    height: 8px;
+    background-color: #666;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}.chat-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+}
+
+.user-message {
+    align-self: flex-end;
+}
+
+.ai-message {
+    align-self: flex-start;
+}
+
+.message-content {
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #f0f0f087;
+}
+
+.user-message .message-content {
+    background-color: #12fafa43;
+    color: #000;
+    margin-bottom: 2px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 20px; 
+    backdrop-filter: blur(10px); 
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.2), 
+        0 8px 20px rgba(0, 0, 0, 0.5); 
+    padding: 15px; 
+    transform: translateZ(0); 
+    transition: transform 0.2s ease; 
+}
+.user-message .message-content:hover {
+    transform: translateY(-2px) scale(1.02); 
+}
+
+/*.ai-message .message-content {
+    background-color: #f0f0f0b2;
+    color: black;
+    margin-bottom: 2px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}*/
+.ai-message .message-content {
+    background-color: rgba(240, 240, 240, 0.3); 
+    color: black;
+    margin-bottom: 2px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 20px; 
+    backdrop-filter: blur(10px); 
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.2), 
+        0 8px 20px rgba(0, 0, 0, 0.5); 
+    padding: 15px; 
+    transform: translateZ(0); 
+    transition: transform 0.2s ease; 
+}
+.ai-message .message-content:hover {
+    transform: translateY(-2px) scale(1.02);
+}
+.message-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.user-icon, .ai-icon {
+    margin-right: 8px;
+}
+.message-text {
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+.message-text pre {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.error {
+    color: #dc3545;
+}
+
+.loading-dots {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+}
+
+.loading-dots span {
+    width: 8px;
+    height: 8px;
+    background-color: #666;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+
+.dropdown-container {
+    position: relative;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+
+#system-dropdown {
+    padding: 10px;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    border: 1px solid #000;
+    border-radius: 15px;
+    background-color: #12fafa51;
+    cursor: pointer;
+    width: 200px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for the dropdown */
+#system-dropdown:hover {
+    background-color: #00cccc;
+    border-color: #005f5f;
+}
+
+/* Focus effect for the dropdown */
+#system-dropdown:focus {
+    outline: none;
+    border-color: #07213c;
+    animation: bounce 0.5s ease;
+}
+
+/* Ensure options are styled */
+#system-dropdown option {
+    padding: 10px;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+}

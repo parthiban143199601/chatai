@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDT-AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>BDT-AI</h1>
+        <div class="dropdown-container">
+            <select id="system-dropdown">
+                <option value="" disabled selected>Select System</option>
+                <option value="c4h">C4H</option>
+                <option value="iseries">iSeries</option>
+            </select>
+        </div>
+        <div class="chat-window">
+            <div class="chat-content"></div>
+        </div>
+        <div class="input-area">    
+            <div class="input-container">
+                <textarea id="user-input" placeholder="Type your question" rows="1"></textarea>
+                <button id="send-button" aria-label="Send message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="popupLayout" class="popup">
+            <div class="popup-content">
+                <span id="closeBtn" class="close">&times;</span>
+                <h2>History</h2>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
